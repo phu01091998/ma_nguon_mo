@@ -25,7 +25,19 @@
         border:2px solid black;
 
     }
-   
+   th,td{
+       padding: 7px 20px;
+   }
+   .phu-border-text-green{
+        border: 2px solid #00f900;
+        color: #00f900;
+        border-radius: 3px;
+   }
+   .phu-border-text-black{
+        border: 2px solid black;
+        color: black;
+        border-radius: 3px;
+   }
     </style>
 </head>
 <body>

@@ -21,6 +21,8 @@
                 <a class="dropdown-item" href="index.php">Bài tập 1</a>
                 <a class="dropdown-item" href="index2.php">Bài tập 2</a>
                 <a class="dropdown-item" href="index3.php">Bài tập 3</a>
+                <a class="dropdown-item" href="index4.php">Bài tập 4</a>
+                <a class="dropdown-item" href="index5.php">Bài tập 5</a>
             </div>
         </li>
     </ul>
