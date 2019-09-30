@@ -18,9 +18,11 @@
             echo "email nhap chua dung dinh dang";
         }
         // var_dump($_FILES);
-        if(isset($_FILES["fileAnhDaiDien"]["tmp_name"]) != ""){
-        move_uploaded_file($_FILES['fileAnhDaiDien']["tmp_name"],"C:/xampp\htdocs\uploads/2.jpg");
-        }
+        if ($_FILES["fileAnhDaiDien"]["name"] != "")
+        move_uploaded_file(
+            $_FILES["fileAnhDaiDien"]["tmp_name"],
+            "uploads/avatar.jpg"
+        );
     ?>
     <form  method="post" enctype="multipart/form-data">
         <div style="margin:10px">

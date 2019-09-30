@@ -8,25 +8,32 @@ $book = new Book(50, "OOP in PHP", "ndungithue", 2019);
 $book->display();
 $ls = Book::getList();
 
-var_dump($ls);
+
 ?>
+
 <table>
-    <tr>
+    <tr class="bg-dark text-white">
         <th>STT</th>
         <th>Tilte</th>
         <th>Price</th>
         <th>Author</th>
         <th>Year</th>
     </tr>
-    <tr>
-        <?php 
-            foreach($ls as $key =>$value ){
-                <td>echo $key;</td>
-                <td>echo $value->$price;</td>
+    <?php 
+            foreach($ls as $key=>$value ){
+                echo "<tr>";
+                echo "<td>".$key ."</td>";
+                echo "<td>".$value->title ."</td>";
+                echo "<td>".$value->price ."</td>";
+                echo "<td>".$value->author ."</td>";
+                echo "<td>".$value->year ."</td>";
+
+                echo "</tr>";
+                
+               
             } 
 
          ?>
-    </tr>
 </table>
 
 
