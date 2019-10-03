@@ -12,7 +12,7 @@ if (isset($_REQUEST["addBook"])) {
     $year = $_REQUEST["year"];
     Book::addToFile($id, $price, $title, $author, $year);
 }
-if(isset($_REQUEST['id_edit'])){
+if (isset($_REQUEST['id_edit'])) {
     $id = $_REQUEST["id_edit"];
     $title = $_REQUEST["title"];
     $price = $_REQUEST["price"];
@@ -74,29 +74,29 @@ $lsFromFile = Book::getListSearch($keyWord);
                         <button type="button" data-toggle="modal" data-target="#confirmDeleteModal<?php echo $key ?>" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> Delete</button>
                         <!-- modal delete_confirm -->
                         <form action="">
-                        <div class="modal fade" id="confirmDeleteModal<?php echo $key ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Warning</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Delete this book?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                        <button type="submit" class="btn btn-danger" name='id_delete' value="<?php echo $value->id ?>">Yes</button>
+                            <div class="modal fade" id="confirmDeleteModal<?php echo $key ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Warning</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Delete this book?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                            <button type="submit" class="btn btn-danger" name='id_delete' value="<?php echo $value->id ?>">Yes</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- end modal delete_confirm -->
+                            <!-- end modal delete_confirm -->
 
                         </form>
-                        <!-- modal addBook -->
+                        <!-- modal editBook -->
                         <div class="modal fade" id="editBook<?php echo $key ?>" " tabindex=" -1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <form class="form-horizontal">
@@ -127,7 +127,7 @@ $lsFromFile = Book::getListSearch($keyWord);
                                                         <input id="price" name="price" type="text" value="<?php echo $value->price ?>" placeholder="<?php echo $value->price ?>" class="form-control input-md">
                                                     </div>
                                                 </div>
-                                                
+
 
                                                 <!-- Text input-->
                                                 <div class="form-group d-flex">
@@ -150,11 +150,12 @@ $lsFromFile = Book::getListSearch($keyWord);
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                             <button type="submit" name='id_edit' value="<?php echo $value->id ?>" class="btn btn-primary">Save changes</button>
                                         </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
 
-                        <!-- end modal addbook -->
+                        <!-- end modal editbook -->
                     </td>
                 </tr>
             <?php
@@ -228,6 +229,7 @@ $lsFromFile = Book::getListSearch($keyWord);
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" name="addBook" class="btn btn-primary">Save changes</button>
                 </div>
+            </div>
         </form>
     </div>
 </div>
