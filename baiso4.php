@@ -97,7 +97,7 @@ $lsFromFile = Book::getListSearch($keyWord);
 
                         </form>
                         <!-- modal editBook -->
-                        <div class="modal fade" id="editBook<?php echo $key ?>" " tabindex=" -1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="editBook<?php echo $key ?>"  tabindex=" -1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <form class="form-horizontal">
                                     <div class="modal-content">
