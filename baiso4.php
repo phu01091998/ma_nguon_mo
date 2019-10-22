@@ -33,7 +33,7 @@ if (isset($_REQUEST["search"])) {
         $keyWord = null;
     }
 }
-$lsFromFile = Book::getListSearch($keyWord);
+$lsFromSearchDB = Book::searchBookDB($keyWord);
 ?>
 <div class="container pt-5">
     <button data-toggle="modal" data-target="#addBook" class="btn btn-outline-info float-right"><i class="fas fa-plus-circle"></i> Thêm</button>
@@ -57,7 +57,7 @@ $lsFromFile = Book::getListSearch($keyWord);
         </thead>
         <tbody>
             <?php
-            foreach ($lsFromDB as $key => $value) {
+            foreach ($lsFromSearchDB as $key => $value) {
                 ?>
                 <tr>
                     <td><?php echo $key + 1 ?></td>

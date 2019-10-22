@@ -193,4 +193,27 @@ class Book
          $con->close();
         //
     }
+    static function searchBookDB($search=null)
+    {
+         //b1: Tao ket noi
+         $con = Book::connect();
+         $lsBook = array();
+         if($search==null){
+             $lsBook =Book::getListFromDB();
+             return $lsBook;
+         }
+         //b2: Thao tac voi csdl: Crud
+         $sql = "select * from book where CONCAT(ID, Title,Price,Author,Year) like '%$search%'";
+         $result = $con->query($sql);    
+         if ($result->num_rows > 0) {
+ 
+             while ($row = $result->fetch_assoc()) {
+                 $book = new Book($row["ID"], $row["Title"], $row["Price"], $row["Author"], $row["Year"]);
+                 array_push($lsBook, $book);
+             }
+         }
+         //b3: giai phong ket noi
+         $con->close();
+         return $lsBook;
+    }
 }
