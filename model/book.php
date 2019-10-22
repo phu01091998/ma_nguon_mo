@@ -25,6 +25,14 @@ class Book
         echo "Author: " . $this->author . "<br>";
         echo "Year: " . $this->year . "<br>";
     }
+    static function connect(){
+        $con = new mysqli("localhost", "root", "", "Bookmanager", "3306");
+        $con->set_charset("utf8");
+        if ($con->connect_error) {
+            die("ket noi that bai. chi tiet" . $con->connect_error);
+        }
+        return $con;
+    }
     #Mock data
     /**
      * Lấy toàn bộ các cuốn sách có trong CSDL
@@ -39,6 +47,33 @@ class Book
         array_push($listBook, new Book(5, "OOP in Ruby on Rails", 30, "thomas", 2019));
         //dfdfdf
         return $listBook;
+    }
+    #Database
+    /**
+     * Lấy toàn bộ các cuốn sách có trong CSDL
+     */
+    static function getListFromDB()
+    {
+        //b1: Tao ket noi
+        $con = new mysqli("localhost", "root", "", "Bookmanager", "3306");
+        $con->set_charset("utf8");
+        if ($con->connect_error) {
+            die("ket noi that bai. chi tiet" . $con->connect_error);
+        }
+        //b2: Thao tac voi csdl: Crud
+        $sql = "SELECT * FROM `book`";
+        $result = $con->query($sql);
+        $lsBook = array();
+        if ($result->num_rows > 0) {
+
+            while ($row = $result->fetch_assoc()) {
+                $book = new Book($row["ID"], $row["Title"], $row["Price"], $row["Author"], $row["Year"]);
+                array_push($lsBook, $book);
+            }
+        }
+        //b3: giai phong ket noi
+        $con->close();
+        return $lsBook;
     }
     /**
      * Lấy dữ liệu từ file
@@ -56,7 +91,7 @@ class Book
         };
         return $lsBook;
     }
-    static function getListSearch($search=null)
+    static function getListSearch($search = null)
     {
         $data = file("data/book.txt", FILE_SKIP_EMPTY_LINES);
         $arrBook = [];
@@ -114,8 +149,48 @@ class Book
         }
         fclose($myfile);
     }
-    static function editBook($id, $price, $title, $author, $year){
+    static function editBook($id, $price, $title, $author, $year)
+    {
         Book::removeByID($id);
         Book::addToFile($id, $price, $title, $author, $year);
+    }
+    static function addBookToDB($price, $title, $author, $year)
+    {
+         //b1: Tao ket noi
+         
+         $con = Book::connect();
+         //b2: Thao tac voi csdl: Crud
+         $sql = "INSERT INTO `book` (`ID`, `Title`, `Price`, `Author`, `Year`) VALUES (NULL, '$title', '$price', '$author', '$year')";
+         $con->query($sql);
+         
+         //b3: giai phong ket noi
+         $con->close();
+        //
+    }
+    static function removeBookDB($id)
+    {
+         //b1: Tao ket noi
+         
+         $con = Book::connect();
+         //b2: Thao tac voi csdl: Crud
+         $sql = "DELETE FROM `book` WHERE `book`.`ID` = $id";
+         $con->query($sql);
+         
+         //b3: giai phong ket noi
+         $con->close();
+        //
+    }
+    static function editBookDB($id, $price, $title, $author, $year)
+    {
+         //b1: Tao ket noi
+         
+         $con = Book::connect();
+         //b2: Thao tac voi csdl: Crud
+         $sql = "UPDATE `book` SET `Title` = '$title', `Price` = '$price',`Author` = '$author',`Year` = '$year' WHERE `book`.`ID` = $id";
+         $con->query($sql);
+         
+         //b3: giai phong ket noi
+         $con->close();
+        //
     }
 }

@@ -1,48 +1,12 @@
-<?php include_once("header.php") ?>
-<?php include_once("nav.php") ?>
-
 <?php
-#Code bài số 4
-include_once("model/book.php");
-if (isset($_REQUEST["addBook"])) {
-   // $id = $_REQUEST["id"];
-    $title = $_REQUEST["title"];
-    $price = $_REQUEST["price"];
-    $author = $_REQUEST["author"];
-    $year = $_REQUEST["year"];
-    Book::addBookToDB( $price, $title, $author, $year);
-}
-if (isset($_REQUEST['id_edit'])) {
-    $id = $_REQUEST["id_edit"];
-    $title = $_REQUEST["title"];
-    $price = $_REQUEST["price"];
-    $author = $_REQUEST["author"];
-    $year = $_REQUEST["year"];
-    Book::editBookDB($id, $price, $title, $author, $year);
-}
-if (isset($_REQUEST['id_delete'])) {
-
-    Book::removeBookDB($_REQUEST['id_delete']);
-}
-$ls = Book::getList();
-$lsFromDB= Book::getListFromDB();
-$keyWord = null;
-if (isset($_REQUEST["search"])) {
-    $keyWord =  $_REQUEST["search"];
-    if ($_REQUEST["search"] == "") {
-        $keyWord = null;
-    }
-}
-$lsFromFile = Book::getListSearch($keyWord);
+    include_once('model/book.php');
+    $lsBook= Book::getListFromFile();
+  
+  
 ?>
 <div class="container pt-5">
     <button data-toggle="modal" data-target="#addBook" class="btn btn-outline-info float-right"><i class="fas fa-plus-circle"></i> Thêm</button>
-    <form action="" method="GET">
-        <div class="form-group">
-            <input class="form-control" value="<?php echo $keyWord; ?>" name="search" style="max-width: 200px; display:inline-block;" placeholder="Search">
-            <button type="submit" class="btn btn-default" style="margin-left:-50px"><i class="fas fa-search"></i></button>
-        </div>
-    </form>
+    
     <table class="table mt-5">
         <thead class="thead-dark">
             <tr>
@@ -57,7 +21,7 @@ $lsFromFile = Book::getListSearch($keyWord);
         </thead>
         <tbody>
             <?php
-            foreach ($lsFromDB as $key => $value) {
+            foreach ($lsBook as $key => $value) {
                 ?>
                 <tr>
                     <td><?php echo $key + 1 ?></td>
@@ -178,12 +142,12 @@ $lsFromFile = Book::getListSearch($keyWord);
                 </div>
                 <div class="modal-body">
                     <fieldset>
-                        <!-- <div class="form-group d-flex">
+                        <div class="form-group d-flex">
                             <label class="pt-1 col-md-2 control-label" for="id">ID</label>
                             <div class="col-md-10">
                                 <input id="id" name="id" type="text" placeholder="ID" class="form-control input-md">
                             </div>
-                        </div> -->
+                        </div>
                         <div class="form-group d-flex">
                             <label class="pt-1 col-md-2 control-label" for="title">Title</label>
                             <div class="col-md-10">
@@ -235,5 +199,3 @@ $lsFromFile = Book::getListSearch($keyWord);
 </div>
 
 <!-- end modal addbook -->
-
-<?php include_once("footer.php") ?>
