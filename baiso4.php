@@ -1,16 +1,17 @@
 <?php include_once("header.php") ?>
 <?php include_once("nav.php") ?>
+<?php include_once("model/book.php") ?>
 
 <?php
 #Code bài số 4
 include_once("model/book.php");
 if (isset($_REQUEST["addBook"])) {
-   // $id = $_REQUEST["id"];
+    // $id = $_REQUEST["id"];
     $title = $_REQUEST["title"];
     $price = $_REQUEST["price"];
     $author = $_REQUEST["author"];
     $year = $_REQUEST["year"];
-    Book::addBookToDB( $price, $title, $author, $year);
+    Book::addBookToDB($price, $title, $author, $year);
 }
 if (isset($_REQUEST['id_edit'])) {
     $id = $_REQUEST["id_edit"];
@@ -25,15 +26,32 @@ if (isset($_REQUEST['id_delete'])) {
     Book::removeBookDB($_REQUEST['id_delete']);
 }
 $ls = Book::getList();
-$lsFromDB= Book::getListFromDB();
+$lsFromDB = Book::getListFromDB();
 $keyWord = null;
+
+
+//pagination
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = 1;
+}
+$mount = 6;
+$start = ($page - 1) * $mount;
+$con = Book::connect();
+$sql = " select COUNT(*) FROM book";
+$result =  $con->query($sql);
+$total_rows = mysqli_fetch_array($result)[0];
+$total_pages = ceil($total_rows / $mount);
+$lsFromSearchDB = Book::paginationFromDB($start, $mount);
+//search
 if (isset($_REQUEST["search"])) {
     $keyWord =  $_REQUEST["search"];
     if ($_REQUEST["search"] == "") {
         $keyWord = null;
     }
+    $lsFromSearchDB = Book::searchBookDB($keyWord);
 }
-$lsFromSearchDB = Book::searchBookDB($keyWord);
 ?>
 <div class="container pt-5">
     <button data-toggle="modal" data-target="#addBook" class="btn btn-outline-info float-right"><i class="fas fa-plus-circle"></i> Thêm</button>
@@ -164,7 +182,40 @@ $lsFromSearchDB = Book::searchBookDB($keyWord);
         </tbody>
     </table>
 </div>
+<div class="container">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+            <li class="page-item <?php if ($page <= 1) {
+                                        echo 'disabled';
+                                    } ?>">
+                <a class="page-link" href="<?php if ($page <= 1) {
+                                                echo '#';
+                                            } else {
+                                                echo "?page=" . ($page - 1);
+                                            } ?>">Prev</a>
+            </li>
 
+            <?php
+            for ($i = $page; $i <= $total_pages && $i <= $page + 10; $i++) {
+                ?>
+                <li class="page-item <?php if ($i == $page) echo ' active' ?>"><a class="page-link" href="<?php echo "?page=" . $i ?> "><?php echo $i ?></a></li>
+            <?php
+            }
+            ?>
+            <li class="page-item <?php if ($page >= $total_pages) {
+                                        echo 'disabled';
+                                    } ?>">
+                <a class="page-link" href="<?php if ($page >= $total_pages) {
+                                                echo '#';
+                                            } else {
+                                                echo "?page=" . ($page + 1);
+                                            } ?>">Next</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="?page=<?php echo $total_pages; ?>">Last</a></li>
+        </ul>
+    </nav>
+</div>
 <!-- modal addBook -->
 <div class="modal fade" id="addBook" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

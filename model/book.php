@@ -216,4 +216,27 @@ class Book
          $con->close();
          return $lsBook;
     }
+    static function paginationFromDB($start = 0 , $mount=3)
+    {
+        //b1: Tao ket noi
+        $con = new mysqli("localhost", "root", "", "Bookmanager", "3306");
+        $con->set_charset("utf8");
+        if ($con->connect_error) {
+            die("ket noi that bai. chi tiet" . $con->connect_error);
+        }
+        //b2: Thao tac voi csdl: Crud
+        $sql = "SELECT * FROM `book` LIMIT $start, $mount";
+        $result = $con->query($sql);
+        $lsBook = array();
+        if ($result->num_rows > 0) {
+
+            while ($row = $result->fetch_assoc()) {
+                $book = new Book($row["ID"], $row["Title"], $row["Price"], $row["Author"], $row["Year"]);
+                array_push($lsBook, $book);
+            }
+        }
+        //b3: giai phong ket noi
+        $con->close();
+        return $lsBook;
+    }
 }
