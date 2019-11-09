@@ -5,14 +5,16 @@ class Contact
     #Begin properties
     var $id;
     var $name;
+    var $email;
     var $phone;
     var $userID;
     #end properties
     #Construct function
-    function __construct($id, $name, $phone, $userID)
+    function __construct($id, $name, $email,$phone, $userID)
     {
         $this->id = $id;
         $this->name = $name;
+        $this->email = $email;
         $this->phone = $phone;
         $this->userID = $userID;
     }
@@ -46,13 +48,27 @@ class Contact
         if ($result->num_rows > 0) {
 
             while ($row = $result->fetch_assoc()) {
-                $contact = new Contact($row["contactid"], $row["name"], $row["phone"], $row["userid"]);
+                $contact = new Contact($row["contactid"], $row["name"],$row["email"], $row["phone"], $row["userid"]);
                 array_push($lsContact, $contact);
             }
         }
         //b3: giai phong ket noi
         $con->close();
         return $lsContact;
+    }
+
+    static function createContactDB($name, $email, $phone, $labelid, $userid)
+    {
+         //b1: Tao ket noi
+         
+         $con = Contact::connect();
+         //b2: Thao tac voi csdl: Crud
+         $sql = "INSERT INTO `contact` (`contactid`, `name`, `email`, `phone`, `userid`) VALUES (NULL, '$name', '$email', '$phone', '$userid')";
+         $con->query($sql);
+         
+         //b3: giai phong ket noi
+         $con->close();
+        //
     }
    
     static function removeContactDB($id)
@@ -61,20 +77,20 @@ class Contact
          
          $con = Contact::connect();
          //b2: Thao tac voi csdl: Crud
-         $sql = "DELETE FROM `contact` WHERE `contact`.`ID` = $id";
+         $sql = "DELETE FROM `contact` WHERE `contact`.`contactid` = '$id'";
          $con->query($sql);
          
          //b3: giai phong ket noi
          $con->close();
         //
     }
-    static function editContactDB($id, $name, $phone)
+    static function editContactDB($id, $name,$email, $phone)
     {
          //b1: Tao ket noi
          
          $con = Contact::connect();
          //b2: Thao tac voi csdl: Crud
-         $sql = "UPDATE `contact` SET `Name` = '$name', `Phone` = '$phone' WHERE `contact`.`ID` = $id";
+         $sql = "UPDATE `contact` SET `name` = '$name', `email` = '$email',`phone` = '$phone' WHERE `contact`.`contactid` = '$id'";
          $con->query($sql);
          
          //b3: giai phong ket noi
@@ -91,12 +107,12 @@ class Contact
              return $lsContact;
          }
          //b2: Thao tac voi csdl: Crud
-         $sql = "select * from contact where userid='$userid' name like '%$search%'";
+         $sql = "select * from contact where userid='$userid' and concat(name,phone,email) like '%$search%'";
          $result = $con->query($sql);    
          if ($result->num_rows > 0) {
  
              while ($row = $result->fetch_assoc()) {
-                 $contact = new Contact($row["ID"], $row["Name"], $row["Phone"], $row["UserID"]);
+                 $contact = new Contact($row["contactid"], $row["name"],$row["email"], $row["phone"], $row["userid"]);
                  array_push($lsContact, $contact);
              }
          }
@@ -119,7 +135,7 @@ class Contact
         if ($result->num_rows > 0) {
 
             while ($row = $result->fetch_assoc()) {
-                $contact = new Contact($row["ID"], $row["Name"], $row["Phone"], $row["UserID"]);
+                $contact = new Contact($row["ID"], $row["Name"],$row["Email"], $row["Phone"], $row["UserID"]);
                 array_push($lsContact, $contact);
             }
         }
