@@ -114,6 +114,32 @@ class Label
         $con->close();
         //
     }
+    static function addContactlabel($cid, $lid)
+    {
+        //b1: Tao ket noi
+
+        $con = Label::connect();
+        //b2: Thao tac voi csdl: Crud
+        $sql = "INSERT INTO `label_contact` (`id`,`labelid`, `contactid`) VALUES (NULL, '$lid', '$cid')";
+        $con->query($sql);
+
+        //b3: giai phong ket noi
+        $con->close();
+        //
+    }
+    static function removeContactlabel($cid)
+    {
+        //b1: Tao ket noi
+
+        $con = Label::connect();
+        //b2: Thao tac voi csdl: Crud
+        $sql = "DELETE FROM label_contact WHERE contactid ='$cid'";
+        $con->query($sql);
+
+        //b3: giai phong ket noi
+        $con->close();
+        //
+    }
 }
 
 

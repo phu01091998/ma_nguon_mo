@@ -8,6 +8,9 @@ if (!isset($_SESSION)) {
 }
 ?>
 <?php
+if (!isset($_SESSION["user"])) {
+    header("location:login.php");
+}
 $user = unserialize($_SESSION["user"]);
 $username = $user->userName;
 ?>
@@ -15,6 +18,35 @@ $username = $user->userName;
 
 <?php
 $userid = $user->userid;
+
+if (isset($_REQUEST["addCL"]) && isset($_REQUEST["laCL"])) {
+
+    $listC = $_REQUEST["addCL"];
+    $arr =    explode(":", $listC);
+    //var_dump($arr);
+    $laID = $_REQUEST["laCL"];
+    foreach ($arr as $key => $value) {
+        //   var_dump($value);
+        if ($value != "") {
+            Label::addContactlabel($value, $laID);
+        }
+    }
+    header("location:index.php");
+}
+//
+if (isset($_REQUEST["deleteCL"])) {
+    $listC = $_REQUEST["deleteCL"];
+    $arr =    explode(":", $listC);
+    //  var_dump($arr);
+    foreach ($arr as $key => $value) {
+        //     var_dump($value);
+        if ($value != "") {
+            Label::removeContactlabel($value);
+        }
+    }
+    header("location:index.php");
+}
+//
 if (isset($_REQUEST["createContact"])) {
     // $id = $_REQUEST["id"];
     $name = $_REQUEST["name"];
@@ -86,9 +118,9 @@ if (isset($_REQUEST["labelid"])) {
     <div class="row">
         <div class="col-md-2 pl-4 text-main pt-1">
             <div class="row align-items-center w-100  ">
-                <h5 class="my-auto mx-3 fa fa-bars" data-toggle="collapse" data-target="#Left"></h5>
+                <h5 class="my-auto ml-3 mr-2 fa fa-bars" data-toggle="collapse" data-target="#Left"></h5>
                 <img src="img/contacts_48dp.png" alt="" class="mx-2" style="width: 19%;">
-                <h5 class="mx-2 my-auto">Contact</h5>
+                <h5 class="mx-2 ml-1 my-auto">Contact</h5>
             </div>
         </div>
         <div class="col-md-10 pr-5 pl-4">
@@ -113,9 +145,9 @@ if (isset($_REQUEST["labelid"])) {
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2 pl-4 collapse show " id="Left">
+        <div class="col-md-2 mt-1 pl-4 collapse show " id="Left">
             <div class="row ">
-                <button data-toggle="modal" data-target="#CreateContact" class=" ml-2 mt-5 px-3  btn btn-outline-secondary btn-them" style="font-weight: 600;;"><span class="VfPpkd-Q0XOV mr-1" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 36 36">
+                <button data-toggle="modal" data-target="#CreateContact" class=" ml-2 mt-4 px-3  btn btn-outline-secondary btn-them" style="font-weight: 600;;"><span class="VfPpkd-Q0XOV mr-1" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 36 36">
                             <path fill="#34A853" d="M16 16v14h4V20z"></path>
                             <path fill="#4285F4" d="M30 16H20l-4 4h14z"></path>
                             <path fill="#FBBC05" d="M6 16v4h10l4-4z"></path>
@@ -215,7 +247,30 @@ if (isset($_REQUEST["labelid"])) {
         <!--list contact -->
         <div class="col mr-4">
             <div class="row">
-                <table class="table borderless mt-5 ml-4">
+                <form action="/" name="addContacttoLabel">
+                    <!-- Collapse -->
+                    <div class="btn-group  mt-1 ml-5 pl-3 align-items-center" title="edit label">
+                        <div data-toggle="collapse" data-target="#addCL" aria-haspopup="true" aria-expanded="false">
+                            <svg width="24" height="24" viewBox="0 0 24 24" class="NSy2Hd RTiFqe undefined">
+                                <path fill="none" d="M0 0h24v24H0V0z"></path>
+                                <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16zM16 17H5V7h11l3.55 5L16 17z"></path>
+                            </svg>
+                        </div>
+                        <div class="collapse mt-2 ml-2" id="addCL">
+                            <span> Label </span>
+                            <select name="labelID" id="labelID111">
+                                <?php foreach ($lsLabelFromDB as $key => $value) { ?>
+                                    <option value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
+                                <?php } ?>
+                            </select>
+
+                            <a class="btn btn-outline-primary text-secondary border p-0 px-1 mb-1" id="addContacttoLabel" href="#">Apply</a>
+                            <a class="btn btn-outline-secondary  border p-0 px-1 mb-1" id="removeContacttoLabel" href="#">unlabelled</a>
+
+                        </div>
+                    </div>
+                </form>
+                <table class="table borderless  ml-4">
                     <thead class="">
                         <tr class="">
                             <th style="padding-left:43px!important;">Num</th>
@@ -232,8 +287,8 @@ if (isset($_REQUEST["labelid"])) {
                             $contactid = $value->id;
                             ?>
                             <tr class="hov">
-                                <td style="padding-left:55px!important;">
-                                    <input type="checkbox" name="contactID" class="chb" value="<?php echo $value->id; ?>">
+                                <td style="padding-left:14px!important;">
+                                    <input type="checkbox" name="contactID" class="chb mr-4" value="<?php echo $value->id; ?>">
                                     <?php echo $key + 1 ?>
                                 </td>
                                 <td class="pl-5"><?php echo $value->name ?></td>
@@ -244,8 +299,8 @@ if (isset($_REQUEST["labelid"])) {
 
 
                                     <!-- <td class="text-center"> -->
-                                    <div class="float-right " ">
-                                        <i data-toggle=" modal" data-target="#editContact<?php echo $key ?>" class="hide mr-2 fas fa-pencil-alt"></i>
+                                    <div class="float-right " >
+                                        <i data-toggle="modal" data-target="#editContact<?php echo $key ?>" class="hide mr-2 fas fa-pencil-alt"></i>
                                         <i data-toggle="modal" data-target="#deleteContact<?php echo $key ?>" class="hide mr-2 far fa-trash-alt"></i>
                                         <span class="d-inline-block pb-2">:</span>
                                     </div>
@@ -350,38 +405,41 @@ if (isset($_REQUEST["labelid"])) {
 
                 </table>
 
-                <form action="/" name="addContacttoLabel"  id="addContacttoLabel">
-                    <!-- Collapse -->
-                    <div class="btn-group">
-                        <div  data-toggle="collapse" data-target="#addCL" aria-haspopup="true" aria-expanded="false">
-                            <svg width="24" height="24" viewBox="0 0 24 24" class="NSy2Hd RTiFqe undefined">
-                                <path fill="none" d="M0 0h24v24H0V0z"></path>
-                                <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16zM16 17H5V7h11l3.55 5L16 17z"></path>
-                            </svg>
-                        </div>
-                        <div class="collapse" id="addCL">
-                            <span> Label </span>
-                            <select name="labelID" id="">
-                                <?php foreach ($lsLabelFromDB as $key => $value) { ?>
-                                    <option value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
-                                <?php } ?>
-                            </select>
 
-                            <button type="submit" name="addCL">Apply</button>
-                            <button type="submit" name="deleteCL">unlabelled</button>
-                        </div>
-                    </div>
-                </form>
                 <script>
+                    //labelid
+                    var tam = "",
+                        tam2 = "index.php?";
+                    var e = document.getElementById("labelID111");
+                    var addlabel = document.getElementById("addContacttoLabel");
+                    var lbCL = e.options[e.selectedIndex].value;
+                    e.addEventListener('click', function() {
+                        tam = "";
+                        var lbCL = e.options[e.selectedIndex].value;
+                        tam = "laCL=" + lbCL;
+                        tam = tam + "&";
+                        var ccc = document.getElementById("addContacttoLabel");
+
+                        ccc.href = tam2 + tam;
+
+                        console.log(ccc.href);
+                        //
+
+
+                    });
+
+                    //contactid
                     var arr = [];
-                    var str="";
+                    var stra = strd = "";
                     var chb = document.querySelectorAll('.chb');
-                   // var addlabel = document.getElementById("addContacttoLabel");
+                    var addlabel = document.getElementById("addContacttoLabel");
+                    var removelabel = document.getElementById("removeContacttoLabel");
 
                     chb.forEach((answer, index) => {
                         console.log(answer.value);
                         answer.addEventListener('click', function() {
-                             = "index.php?";
+                            stra = "index.php?";
+                            strd = "index.php?"
                             if (answer.checked == 1) {
                                 arr.push(answer.value);
                                 console.log(arr);
@@ -393,15 +451,27 @@ if (isset($_REQUEST["labelid"])) {
                                     console.log(arr);
                                 }
                             }
+                            stra = stra + "addCL=";
+                            strd = strd + "deleteCL=";
                             for (var i = 0; i < arr.length; i++) {
-                                str = str + "contactID=";
-                                str = str + arr[i].toString();
-                                str = str + '&';
 
+                                stra = stra + arr[i].toString();
+                                stra = stra + ':';
+                                //
+
+                                strd = strd + arr[i].toString();
+                                strd = strd + ':';
                             }
-                            console.log(str);
-                            document.addContacttoLabel.action= str;
-                            console.log(document.addContacttoLabel.action);
+                            stra = stra + '&';
+                            strd = strd + '&';
+
+
+                            addlabel.href = stra + tam;
+                            tam2 = stra;
+                            removelabel.href = strd;
+                            console.log(addlabel.href);
+                            console.log(removelabel.href);
+
 
 
                         });
