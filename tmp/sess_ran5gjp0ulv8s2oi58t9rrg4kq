@@ -1,0 +1,54 @@
+ PMA_token |s:32:"432d5a4665342b56345d3d45527b2530"; HMAC_secret |s:16:"SbwLZZ4/C3{U\{=|";browser_access_time|a:1:{s:7:"default";i:1574930441;}relation|a:1:{i:1;a:41:{s:11:"PMA_VERSION";s:5:"4.9.1";s:7:"relwork";b:1;s:11:"displaywork";b:1;s:12:"bookmarkwork";b:1;s:7:"pdfwork";b:1;s:8:"commwork";b:1;s:8:"mimework";b:1;s:11:"historywork";b:1;s:10:"recentwork";b:1;s:12:"favoritework";b:1;s:11:"uiprefswork";b:1;s:12:"trackingwork";b:1;s:14:"userconfigwork";b:1;s:9:"menuswork";b:1;s:7:"navwork";b:1;s:17:"savedsearcheswork";b:1;s:18:"centralcolumnswork";b:1;s:20:"designersettingswork";b:1;s:19:"exporttemplateswork";b:1;s:8:"allworks";b:1;s:4:"user";s:4:"root";s:2:"db";s:10:"phpmyadmin";s:8:"bookmark";s:13:"pma__bookmark";s:15:"central_columns";s:20:"pma__central_columns";s:11:"column_info";s:16:"pma__column_info";s:17:"designer_settings";s:22:"pma__designer_settings";s:16:"export_templates";s:21:"pma__export_templates";s:8:"favorite";s:13:"pma__favorite";s:7:"history";s:12:"pma__history";s:16:"navigationhiding";s:21:"pma__navigationhiding";s:9:"pdf_pages";s:14:"pma__pdf_pages";s:6:"recent";s:11:"pma__recent";s:8:"relation";s:13:"pma__relation";s:13:"savedsearches";s:18:"pma__savedsearches";s:12:"table_coords";s:17:"pma__table_coords";s:10:"table_info";s:15:"pma__table_info";s:13:"table_uiprefs";s:18:"pma__table_uiprefs";s:8:"tracking";s:13:"pma__tracking";s:10:"userconfig";s:15:"pma__userconfig";s:10:"usergroups";s:15:"pma__usergroups";s:5:"users";s:10:"pma__users";}}two_factor_check|b:1;cache|a:3:{s:8:"server_1";a:4:{s:15:"userprefs_mtime";s:10:"1574930437";s:14:"userprefs_type";s:2:"db";s:12:"config_mtime";i:1569038098;s:9:"userprefs";a:2:{s:7:"Console";a:1:{s:4:"Mode";s:8:"collapse";}s:4:"lang";s:2:"vi";}}s:13:"server_1_root";a:18:{s:14:"mysql_cur_user";s:14:"root@localhost";s:12:"is_grantuser";b:1;s:13:"is_createuser";b:1;s:12:"is_superuser";b:1;s:17:"is_create_db_priv";b:1;s:14:"is_reload_priv";b:1;s:12:"db_to_create";s:0:"";s:30:"dbs_where_create_table_allowed";a:1:{i:0;s:1:"*";}s:11:"dbs_to_test";b:0;s:9:"proc_priv";b:1;s:10:"table_priv";b:1;s:8:"col_priv";b:1;s:7:"db_priv";b:1;s:11:"binary_logs";a:0:{}s:18:"menu-levels-server";a:13:{s:9:"databases";s:20:"Cơ sở dữ liệu";s:3:"sql";s:3:"SQL";s:6:"status";s:13:"Tình trạng";s:6:"rights";s:14:"Người dùng";s:6:"export";s:6:"Xuất";s:6:"import";s:6:"Nhập";s:8:"settings";s:11:"Cài đặt";s:6:"binlog";s:22:"Nhật ký nhị phân";s:11:"replication";s:9:"Bản sao";s:4:"vars";s:6:"Biến";s:7:"charset";s:10:"Bảng mã";s:7:"plugins";s:16:"Phần bổ sung";s:6:"engine";s:9:"Bộ máy";}s:14:"menu-levels-db";a:14:{s:9:"structure";s:11:"Cấu trúc";s:3:"sql";s:3:"SQL";s:6:"search";s:11:"Tìm kiếm";s:5:"query";s:10:"Truy vấn";s:6:"export";s:6:"Xuất";s:6:"import";s:6:"Nhập";s:9:"operation";s:9:"Thao tác";s:10:"privileges";s:14:"Đặc quyền";s:8:"routines";s:11:"Thủ tục";s:6:"events";s:11:"Sự kiện";s:8:"triggers";s:5:"Bẫy";s:8:"tracking";s:9:"Theo dõi";s:8:"designer";s:17:"Bộ thiết kế";s:15:"central_columns";s:21:"Các cột trung tâm";}s:19:"profiling_supported";b:1;s:17:"menu-levels-table";a:11:{s:6:"browse";s:7:"Duyệt";s:9:"structure";s:11:"Cấu trúc";s:3:"sql";s:3:"SQL";s:6:"search";s:11:"Tìm kiếm";s:6:"insert";s:5:"Chèn";s:6:"export";s:6:"Xuất";s:6:"import";s:6:"Nhập";s:10:"privileges";s:14:"Đặc quyền";s:9:"operation";s:9:"Thao tác";s:8:"tracking";s:9:"Theo dõi";s:8:"triggers";s:5:"Bẫy";}}s:13:"version_check";a:2:{s:8:"response";s:248:"{
+    "date": "2019-11-22", 
+    "version": "4.9.2", 
+    "releases": [
+        {
+            "date": "2019-11-22", 
+            "php_versions": ">=5.5,<7.4", 
+            "version": "4.9.2", 
+            "mysql_versions": ">=5.5"
+        }
+    ]
+}";s:9:"timestamp";i:1574930379;}}git_location|N;is_git_revision|b:0;tmpval|a:16:{s:15:"favorite_tables";a:1:{i:1;a:0:{}}s:13:"recent_tables";a:1:{i:1;a:1:{i:0;a:2:{s:2:"db";s:12:"phonemanager";s:5:"table";s:5:"phone";}}}s:18:"table_limit_offset";i:0;s:21:"table_limit_offset_db";s:12:"phonemanager";s:5:"query";a:10:{s:32:"678be817cf07804a3af78fdce7db7a8b";a:8:{s:3:"sql";s:332:"--
+-- Đang đổ dữ liệu cho bảng `type`
+--
+
+INSERT INTO `type` (`typeid`, `typename`) VALUES
+(1, 'blackberry'),
+(2, 'coolpad'),
+(3, 'huawei'),
+(4, 'iphone'),
+(5, 'itel'),
+(6, 'masstel'),
+(7, 'mobell'),
+(8, 'nokia'),
+(9, 'oppo'),
+(10, 'realme'),
+(11, 'samsung'),
+(12, 'vivo'),
+(13, 'vsmart'),
+(14, 'xiaomi')";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"b703ffb8042435299bd1a57eeeb5e142";a:8:{s:3:"sql";s:146:"--
+-- Chỉ mục cho các bảng đã đổ
+--
+
+--
+-- Chỉ mục cho bảng `phone`
+--
+ALTER TABLE `phone`
+  ADD PRIMARY KEY (`phoneid`)";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"f4a6145db0b926a07f43cb026e70f67c";a:8:{s:3:"sql";s:90:"--
+-- Chỉ mục cho bảng `type`
+--
+ALTER TABLE `type`
+  ADD PRIMARY KEY (`typeid`)";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"acbcc853c83a3df8fc9d52d6c2ca784a";a:8:{s:3:"sql";s:193:"--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `phone`
+--
+ALTER TABLE `phone`
+  MODIFY `phoneid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"bfff4302c9e9d4e7009b14633ab4de30";a:8:{s:3:"sql";s:133:"--
+-- AUTO_INCREMENT cho bảng `type`
+--
+ALTER TABLE `type`
+  MODIFY `typeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"1d0ba376e273b9d622641124d8c59264";a:8:{s:3:"sql";s:6:"COMMIT";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"314a2a6af715a117719831abd47a7e59";a:8:{s:3:"sql";s:62:"/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"3156cc0fff730d17edc1acfdb05ed71c";a:8:{s:3:"sql";s:64:"/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"dcdde952b3211bb4e1b0a9110e18a57f";a:8:{s:3:"sql";s:62:"/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"cce7799ea1fd9d9a53165dd37992a64e";a:8:{s:3:"sql";s:21:"SELECT * FROM `phone`";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";s:1:"0";s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}}s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;s:12:"display_blob";b:0;s:19:"hide_transformation";b:0;s:3:"pos";s:1:"0";s:8:"max_rows";i:25;s:12:"repeat_cells";i:100;s:13:"table_uiprefs";a:1:{i:1;a:1:{s:12:"phonemanager";a:1:{s:5:"phone";a:0:{}}}}s:20:"possible_as_geometry";b:1;}ConfigFile1|a:2:{s:7:"Console";a:1:{s:4:"Mode";s:8:"collapse";}s:7:"Servers";a:1:{i:1;a:2:{s:7:"only_db";s:0:"";s:7:"hide_db";s:0:"";}}}debug|a:0:{}__upload_status|a:1:{s:7:"handler";s:47:"PhpMyAdmin\Plugins\Import\Upload\UploadNoplugin";}Import_message|a:2:{s:7:"message";N;s:11:"go_back_url";N;}is_multi_query|b:0;sql_history|a:2:{i:0;a:3:{s:2:"db";s:12:"phonemanager";s:5:"table";s:0:"";s:8:"sqlquery";s:62:"/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */";}i:1;a:3:{s:2:"db";s:12:"phonemanager";s:5:"table";s:5:"phone";s:8:"sqlquery";s:21:"SELECT * FROM `phone`";}}errors|a:0:{}
