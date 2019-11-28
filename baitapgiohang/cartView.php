@@ -3,6 +3,7 @@
 <?php include_once("model/phone.php") ?>
 <?php include_once("model/cart.php") ?>
 <br><br><br>
+<br><br><br>
 <?php
 //khởi tạo:
 if (!isset($_SESSION)) {
@@ -10,7 +11,16 @@ if (!isset($_SESSION)) {
 }
 //unset($_SESSION["cart"]);
 $lsCartItem = array();
-$lsCartItem = unserialize($_SESSION["cart"]);
+if(!isset($_SESSION["cart"])){
+    $_SESSION["cart"]= serialize($lsCartItem);
+}else{
+    $lsCartItem = unserialize($_SESSION["cart"]);
+    if(sizeof($lsCartItem)==0){
+        header("location:product.php");
+    }
+}
+
+
 if (isset($_REQUEST["addFromDetail"])) {
     $phoneid = $_REQUEST["phoneid"];
     $num = $_REQUEST["numQuantityDetail"];
@@ -33,6 +43,7 @@ if (isset($_REQUEST["addFromDetail"])) {
     unset($_SESSION["cart"]);
     $_SESSION["cart"] = serialize($lsCartItem);
     header("location:cartView.php");
+    
 }
 if (isset($_REQUEST["addFromProduct"])) {
     $phoneid = $_REQUEST["phoneid"];
