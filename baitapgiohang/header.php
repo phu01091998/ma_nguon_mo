@@ -28,11 +28,21 @@
     .loai:hover .aaa{
       color: #ffb204!important;
     }
+    .qc:hover .qcshow{
+      display: block!important;
+    }
+    
     ul{
       list-style: none;
     }
     li:hover{
       background: #4141;
+    }
+    @media (max-width:768px){
+      .qc{
+        display: none!important;
+      }
+     
     }
   </style>
 </head>

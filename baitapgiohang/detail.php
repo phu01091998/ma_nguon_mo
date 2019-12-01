@@ -20,21 +20,21 @@ if (isset($_REQUEST["phoneid"])) {
         </div>
         <div class="col-12 col-lg-7 px-3 py-3 bg-light">
             <form action="cartView.php" method="get">
-                <div class="w-100 my-2">
-                    <h6>tên sản phẩm: <?php echo $phone->phonename; ?></h6>
+                <div class="w-100 my-3">
+                    <h6>Tên sản phẩm: <b><?php echo $phone->phonename; ?></b></h6>
 
                 </div>
-                <div class="w-100 my-2 ">
-                    <h6>giá sản phẩm: <?php echo $phone->price; ?> <u>VNĐ</u></h6>
+                <div class="w-100 my-3 ">
+                    <h6>Giá sản phẩm: <span class="text-danger"><?php echo $phone->price; ?></span> <u>VNĐ</u></h6>
 
                 </div>
-                <div class="w-100 my-2 ">
-                    <p>mô tả: <?php echo $phone->description; ?></p>
+                <div class="w-100 my-3 ">
+                    <p>Mô tả: <?php echo $phone->description; ?></p>
 
                 </div>
-                <div class="w-100 my-2 ">
+                <div class="w-100 my-3 ">
                     Số lượng mua:
-                    <input type="number" name="numQuantityDetail" required min="1">
+                    <input type="number" name="numQuantityDetail" required min="1" style="width: 50px;">
                 </div>
                 <input type="hidden" name="phoneid" value="<?php echo $phone->phoneid;?>">
                 <input type="hidden" name="price" value="<?php echo $phone->price;?>">
