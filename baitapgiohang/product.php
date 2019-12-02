@@ -32,11 +32,11 @@ if (isset($_REQUEST["typeid"])) {
                     <li class="loai rounded w-100 py-2 m-0 font-weight-bold" style="font-size: 13px; text-transform: uppercase;"><a href="?typeid=<?php echo $value->typeid; ?>" class="pl-4 aaa" style="display: block;"><?php echo $value->typename; ?> </a></li>
                 <?php } ?>
             </ul>
-            <div class="w-100 bg-light text-center pt-5 qc" style="height: 543px;"><h6 class="qcshow text-info" style="display: none;">quảng cáo nè</h6></div>
+            <div class="w-100 bg-light text-center pt-5 qc" style="height: 543px;"><h6 class="qcshow text-info" style="display: none;">sản phẩm nổi bật</h6></div>
         </div>
         <div class="col-12 col-md-10 pt-3 pb-0 pl-md-0">
             <div class="w-100 row mb-4 " style="margin-top: 0px;">
-            <div class="col-6 col-md-3 pl-5 py-1 title-group"><h6 class="d-inline-block ml-2">Danh mục sản phẩm</h6></div>
+            <div class="col-6 col-danhmuc col-md-3 pl-5 py-1 title-group"><h6 class="title-danhmuc d-inline-block ml-2">Danh mục sản phẩm</h6></div>
                 <div class="col-6 col-md-9 search-group">
                     <form action="" class="">
                         <div class="input-group w-100"><input class="w-100 rounded   pl-3" type="text" name="phoneSearch" placeholder="Tìm kiếm"><button type="submit" class="btn btn-default " style="margin-left: -43px;z-index: 98;"><i class="fas fa-search"></i></button></div>
@@ -58,8 +58,8 @@ if (isset($_REQUEST["typeid"])) {
                             <h6 class="text-danger"><span class="text-body">Giá: </span><?php echo $value->price; ?> đ</h6>
                         </div>
                         <div class="row product-action   px-3 py-2 m-0" style="height: 40px;">
-                            <div class="w-50 " style="padding-right: 13px;"><a href="detail.php?phoneid=<?php echo $value->phoneid; ?>" class="float-right rounded-pill btn btn-outline-secondary px-2 py-1" style="font-size: 12px;">Chi tiết</a></div>
-                            <div class="w-50 " style="padding-left: 13px;"><a href="cartView.php?addFromProduct=&phoneid=<?php echo $value->phoneid; ?>&numQuantity=1" class=" float-left rounded-pill  btn-secondary   btn  px-3 py-1" style="font-size: 12px;">Mua</a></div>
+                            <div class="w-50 " style="padding-right: 13px;"><a href="detail.php?phoneid=<?php echo $value->phoneid; ?>" class="twobtn float-right rounded-pill btn btn-outline-secondary px-2 py-1" style="font-size: 12px;">Chi tiết</a></div>
+                            <div class="w-50 " style="padding-left: 13px;"><a href="cartView.php?addFromProduct=&phoneid=<?php echo $value->phoneid; ?>&numQuantity=1" class="twobtn float-left rounded-pill  btn-secondary   btn  px-3 py-1" style="font-size: 12px;">Mua</a></div>
                         </div>
                     </div>
                     <!-- -- -->

@@ -11,14 +11,14 @@ if (isset($_REQUEST["phoneid"])) {
 
 
 <br><br><br>
-<h1 class="text-info text-center">Chi tiết sản phẩm</h1>
+<h1 class="text-info text-center title-detail">Chi tiết sản phẩm</h1>
 <br>
 <div class="container">
     <div class="row m-0 ">
-        <div class="col-12 col-lg-5">
+        <div class="col-12 col-lg-5 my-2">
             <img src="imgs/<?php echo $phone->image; ?>" alt="" class="img-fluid">
         </div>
-        <div class="col-12 col-lg-7 px-3 py-3 bg-light">
+        <div class="col-12 col-lg-7 mt-3 mb-4 px-3 py-3 bg-light">
             <form action="cartView.php" method="get">
                 <div class="w-100 my-3">
                     <h6>Tên sản phẩm: <b><?php echo $phone->phonename; ?></b></h6>

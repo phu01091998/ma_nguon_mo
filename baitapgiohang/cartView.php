@@ -80,14 +80,14 @@ if (isset($_REQUEST["numQuantityUpdate"])) {
     $phone = Phone::searchPhoneByID($phoneid);
     //
     foreach ($lsCartItem as $key => $value) {
-        if ($value->phoneid == $phoneid && $num>0) {
+        if ($value->phoneid == $phoneid && $num > 0) {
             $value->quantity = $num;
             $value->setTotalCost();
             //echo $value->quantity;
             break;
         }
     }
-   // var_dump($lsCartItem);
+    // var_dump($lsCartItem);
     unset($_SESSION["cart"]);
     $_SESSION["cart"] = serialize($lsCartItem);
     header("location:cartView.php");
@@ -132,14 +132,14 @@ if (isset($_REQUEST["delete1Row"])) {
                 <!-- -- -->
                 <tr>
                     <td class="d-flex ">
-                        <div class="w-25" style="height:80px">
+                        <div class="w-25 img-inCart" style="height:80px">
                             <img class="h-100" src="imgs/<?php echo $value->image; ?>" alt="ảnh">
                         </div>
                         <p class="w-75"><?php echo $value->phonename; ?></p>
                     </td>
                     <td><?php echo $value->price; ?></td>
                     <td>
-                        <input style="width: 35%;" type="number" name="<?php echo $value->phoneid ?>" value="<?php echo $value->quantity; ?>" required min="1" onchange="updateCart(this.name,this.value);">
+                        <input class="input-quantity" style="width: 35%;" type="number" name="<?php echo $value->phoneid ?>" value="<?php echo $value->quantity; ?>" required min="1" onchange="updateCart(this.name,this.value);">
                     </td>
                     <td><?php echo $value->totalCost; ?></td>
                     <td><a class="btn btn-info py-0" href="?delete1Row=&phoneid=<?php echo $value->phoneid; ?>">Xóa</a></td>
