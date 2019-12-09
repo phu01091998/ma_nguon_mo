@@ -27,7 +27,7 @@
                 <i class="mb-4">Tác giả: <?php echo $value->author; ?>&emsp; Ngày đăng: <?php echo $value->datepost; ?>
                 &emsp; Sửa lần cuối: <?php echo $value->dateupdate; ?></i>
                 <p class="my-2 mt-4">&emsp;&emsp;<?php echo $value->content; ?></p>
-                <img src="imgs/<?php echo $value->image; ?>" alt="">
+                <img src="image-upload/<?php echo $value->image; ?>" alt="">
             <?php }} ?>
         </div>
         <!-- hot news -->

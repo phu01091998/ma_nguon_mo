@@ -1,24 +1,34 @@
 <?php include_once('header.php') ?>
 <?php include_once('model/news.php') ?>
+<?php include_once('model/user.php') ?>
 
-<?php 
+<?php
+$lsNews = News::getListNews();
+if (isset($_REQUEST['catogryID'])) {
+    $lsNews = News::getListNewsByCatogryID($_REQUEST['catogryID']);
+}
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (isset($_SESSION["user"])) {
+    $user = unserialize($_SESSION['user']);
+}
 
-
-$lsNews = News::getListNews(); 
+//var_dump($user);
 ?>
 <?php $lsCatogry = Catogry::getListCatogry(); ?>
 
 
 
 <!-- header -->
-<div class="container-fluid px-5">
-    <div class="row bg-light  p-2 " >
+<div class="container-fluid mb-3 ">
+    <div class="row p-2 " style="background: #6c757d">
         <div class="d-inline-block col-10">
-            <h1 class=""><a href="index.php" style="padding-left: 155px!important; text-decoration: none!important;">Tintuc.org</a></h1>
+            <h1 class=""><a href="index.php" style="padding-left: 199px!important; text-decoration: none!important; color:#fff">Tintuc.org</a></h1>
         </div>
         <div class="col-2 align-items-center">
-            <button class="btn btn-default mt-2"><a href="login.php">Login</a></button>
-            <button class="btn btn-default mt-2"><a href="logout.php">Logout</a></button>
+            <a class="btn btn-light mt-2" href="login.php" style="color: #000"><?php echo isset($user)&& $user != null ?$user->userName :"Login";?></a>
+            <a class="btn btn-light mt-2" href="logout.php" style="color: #000">Logout</a>
         </div>
     </div>
 </div>
@@ -29,7 +39,7 @@ $lsNews = News::getListNews();
             <?php foreach ($lsNews as $key => $value) { ?>
                 <div class="row bg-light  p-1 m-2">
                     <div class="col 4">
-                        <img src="imgs/<?php echo $value->image; ?>" alt="" class="w-100">
+                        <img src="image-upload/<?php echo $value->image; ?>" alt="" class="w-100">
                     </div>
                     <div class="col-8">
                         <h5><a href="detail.php?id=<?php echo $value->newsid ?>"><?php echo $value->title; ?></a></h5>
@@ -44,11 +54,11 @@ $lsNews = News::getListNews();
         </div>
         <!-- hot news -->
         <div class="col-3 mt-2">
-            <div class="w-100 bg-info p-1 px-3 pt-4 pb-5">
-                <h3>Catogry</h3>
+            <div class="w-100 p-1 px-3 pt-4 pb-5" style="background-color: #e6e6e6;">
+                <h3 class="pl-3">Chuyên mục</h3>
                 <?php foreach ($lsCatogry as $key => $value) { ?>
 
-                    <h5><?php echo $value->catogryName; ?></h5>
+                    <h5 class="pl-3"><a href="?catogryID=<?php echo $value->catogryID; ?>" style="color: black"><?php echo $value->catogryName; ?></a></h5>
                 <?php } ?>
             </div>
         </div>

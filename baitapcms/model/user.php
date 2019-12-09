@@ -34,7 +34,7 @@ class User
         $result = $con->query($sql);
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            $user = new User($row["userid"], $row["username"], $row["password"]);
+            $user = new User($row["username"], $row["password"]);
             $con->close();
             return $user;
         }

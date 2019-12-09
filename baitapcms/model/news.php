@@ -58,6 +58,25 @@ class News
         $con->close();
         return $lsNews;
     }
+    static function getListNewsByCatogryID($catogryID)
+    {
+
+        //b1: Tao ket noi
+        $con = News::connect();
+        $sql = "SELECT * FROM `news` WHERE catogryid = '$catogryID'";
+        $result = $con->query($sql);
+        $lsNews = array();
+        if ($result->num_rows > 0) {
+
+            while ($row = $result->fetch_assoc()) {
+                $news = new News($row["newsid"], $row["title"], $row["content"], $row["author"], $row["datepost"], $row["dateupdate"], $row["image"], $row["video"], $row["catogryid"]);
+                array_push($lsNews, $news);
+            }
+        }
+        //b3: giai phong ket noi
+        $con->close();
+        return $lsNews;
+    }
     static function createNews($title, $content, $author, $datepost, $dateupdate, $image, $video, $catogryid)
     {
         $con = News::connect();
@@ -117,7 +136,7 @@ class Catogry
 
         $con = News::connect();
         //b2: Thao tac voi csdl: Crud
-        $sql = "INSERT INTO `catogry` (`id`,`name`) VALUES (NULL,'$catogryName')";
+        $sql = "INSERT INTO `catogry` (`catogryid`,`catogryname`) VALUES (NULL,'$catogryName')";
         $con->query($sql);
 
         //b3: giai phong ket noi
@@ -130,7 +149,7 @@ class Catogry
 
         $con = News::connect();
         //b2: Thao tac voi csdl: Crud
-        $sql = "UPDATE `catogry` set `catogryname` = '$catogryName' where `catogryid` = '$catogryID',";
+        $sql = "UPDATE `catogry` SET `catogryname` = '$catogryName' WHERE `catogry`.`catogryid` = '$catogryID'";
         $con->query($sql);
 
         //b3: giai phong ket noi
@@ -162,7 +181,7 @@ class Catogry
 
         $con = News::connect();
         //b2: Thao tac voi csdl: Crud
-        $sql = "DELETE FROM cattogry WHERE catogryid ='$catogryID'";
+        $sql = "DELETE FROM catogry WHERE `catogry`.`catogryid` = '$catogryID'";
         $con->query($sql);
 
         //b3: giai phong ket noi
