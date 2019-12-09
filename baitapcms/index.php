@@ -1,6 +1,11 @@
 <?php include_once('header.php') ?>
 <?php include_once('model/news.php') ?>
-<?php $lsNews = News::getListNews(); ?>
+
+<?php 
+
+
+$lsNews = News::getListNews(); 
+?>
 <?php $lsCatogry = Catogry::getListCatogry(); ?>
 
 
@@ -43,7 +48,7 @@
                 <h3>Catogry</h3>
                 <?php foreach ($lsCatogry as $key => $value) { ?>
 
-                    <h5><?php echo $value->name; ?></h5>
+                    <h5><?php echo $value->catogryName; ?></h5>
                 <?php } ?>
             </div>
         </div>

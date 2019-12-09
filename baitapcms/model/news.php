@@ -83,15 +83,16 @@ class News
         $con->close();
         //
     }
-    static function editNews($id, $title, $content, $author, $datepost, $dateupdate, $image, $video, $catogryid)
+    static function editNews($id, $title, $content, $author, $dateupdate, $image, $video, $catogryID)
     {
         //b1: Tao ket noi
 
         $con = News::connect();
         //b2: Thao tac voi csdl: Crud
-        $sql = "UPDATE `news` SET `title` = '$title',`content` = '$content',`author` = '$author',
-        `datepost` = '$datepost',`dateupdate` = '$dateupdate',`image` = '$image',`video` = '$video',`catogryid` = '$catogryid'
-         WHERE `news`.`news.id` = '$id'";
+        // $sql = "UPDATE `news` SET `title` = '$title',`content` = '$content',`author` = '$author',
+        // `dateupdate` = '$dateupdate',`image` = '$image',`video` = '$video',`catogryid` = '$catogryid'
+        //  WHERE `news.id` = '$id'";
+        $sql = "UPDATE `news` SET `title` = '$title',`content` = '$content',`author` = '$author', `dateupdate` = '$dateupdate',`image` = '$image',`video` = '$video',`catogryid` = '$catogryID' WHERE `news`.`newsid` = '$id'";
         $con->query($sql);
 
         //b3: giai phong ket noi
@@ -103,12 +104,12 @@ class News
 
 class Catogry
 {
-    var $catogryId;
-    var $name;
-    function __construct($catogryId, $name)
+    var $catogryID;
+    var $catogryName;
+    function __construct($catogryID, $catogryName)
     {
-        $this->catogryId = $catogryId;
-        $this->name = $name;
+        $this->catogryID = $catogryID;
+        $this->catogryName = $catogryName;
     }
     static function addCatogry($catogryName)
     {
