@@ -5,7 +5,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($_FILES["fileToUpload"]["name"] != "") {
-        $target_dir = "../image-upload/";
+        $target_dir = "../image-profile/";
         $target_file = $target_dir . $_FILES["fileToUpload"]["name"];
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -61,11 +61,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h5 class="ml-1">Thư viện</h5>
             <div class="row text-center p-1 mx-1">
                 <?php
-                $path = "../image-upload/";
+                $path = "../image-profile/";
                 $files = scandir($path);
                 foreach ($files as $filename) {
                     if ($filename != "." && $filename != "..") { ?>
-                        <div class="img-item m-1 " style="width: 170px;height: 110px"><img src="../image-upload/<?php echo $filename; ?>" alt="" class="w-100 h-100"></div>
+                        <div class="img-item m-1 " style="width: 170px;height: 110px"><img src="../image-profile/<?php echo $filename; ?>" alt="" class="w-100 h-100"></div>
                 <?php
 
                     }

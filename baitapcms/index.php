@@ -39,7 +39,7 @@ if (isset($_SESSION["user"])) {
             <?php foreach ($lsNews as $key => $value) { ?>
                 <div class="row bg-light  p-1 m-2">
                     <div class="col 4">
-                        <img src="image-upload/<?php echo $value->image; ?>" alt="" class="w-100">
+                        <img src="image-profile/<?php echo $value->image; ?>" alt="" class="w-100">
                     </div>
                     <div class="col-8">
                         <h5><a href="detail.php?id=<?php echo $value->newsid ?>"><?php echo $value->title; ?></a></h5>

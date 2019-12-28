@@ -1,5 +1,5 @@
 <?php include_once('../header.php') ?>
-<?php include_once('../model/news.php');?>
+<?php include_once('../model/news.php'); ?>
 <?php include_once('../model/user.php');
 if (!isset($_SESSION)) {
     session_start();
@@ -34,7 +34,11 @@ $lsCatogry = Catogry::getListCatogry();
                 <label for="content">Nội dung</label>
                 <textarea class="ckeditor" name="content"></textarea>
                 <script>
-                    CKEDITOR.replace('content');
+                    CKEDITOR.replace('content', {
+                        height: 300,
+                        filebrowserUploadUrl: "../upload.php",
+                        filebrowserUploadMethod: "form"
+                    });
                 </script>
 
         </div>
@@ -73,12 +77,12 @@ $lsCatogry = Catogry::getListCatogry();
                     <div class="w-100 p-1 px-3">
                         <h6 class="pl-1">Chọn ảnh</h6>
                         <?php
-                        $path = "../image-upload/";
+                        $path = "../image-profile/";
                         $files = scandir($path);
                         foreach ($files as $filename) {
                             if ($filename != "." && $filename != "..") { ?>
                                 <div class="img-item m-1 d-inline-block" style="width: 180px;height: 110px">
-                                    <img src="../image-upload/<?php echo $filename; ?>" alt="" class="w-75 h-75 mr-2">
+                                    <img src="../image-profile/<?php echo $filename; ?>" alt="" class="w-75 h-75 mr-2">
                                     <input type="radio" name="image" value="<?php echo $filename; ?>" onchange="handleChange1(this.value);">
                                 </div>
                         <?php
@@ -97,7 +101,7 @@ $lsCatogry = Catogry::getListCatogry();
 <script>
     function handleChange1(value) {
         console.log(value);
-        document.getElementById('img-show').src="../image-upload/"+value;
+        document.getElementById('img-show').src = "../image-profile/" + value;
         console.log(document.getElementById('img-show').src);
     }
 </script>

@@ -107,7 +107,7 @@ if (isset($_REQUEST['deleteCatogry'])) {
                         <div class="d">
                             <a class="mr-3" href="update.php?id=<?php echo $value->newsid ?>">Chỉnh sửa</a>
                             <span class="text-danger" style="cursor: pointer;" data-toggle="modal" data-target="#deleteNews<?php echo $key ?>">Xóa</span></div>
-                        <span>Chỉnh sửa lần cuối: 2019-12-08</span>
+                        <span>Chỉnh sửa lần cuối: <?php echo $value->dateupdate ?></span>
                     </div>
 
                 </div>

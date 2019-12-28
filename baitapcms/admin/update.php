@@ -47,7 +47,11 @@ $lsCatogry = Catogry::getListCatogry();
                         <label for="content">Nội dung</label>
                         <textarea class="ckeditor" name="content"><?php echo $value->content; ?></textarea>
                         <script>
-                            CKEDITOR.replace('content');
+                            CKEDITOR.replace('content', {
+                        height: 300,
+                        filebrowserUploadUrl: "../upload.php",
+                        filebrowserUploadMethod: "form"
+                    });
                         </script>
 
                 <?php $img = $value->image;
@@ -76,7 +80,7 @@ $lsCatogry = Catogry::getListCatogry();
                 </div>
             </div>
             <div class="w-50 mt-2 mb-4">
-                <img src="../image-upload/<?php echo $img ?>" alt="" id="img-show" class="w-100">
+                <img src="../image-profile/<?php echo $img ?>" alt="" id="img-show" class="w-100">
             </div>
             <div class="w-100 public">
                 <button type="submit" class="btn" name="update">Cập nhập</button>
@@ -90,12 +94,12 @@ $lsCatogry = Catogry::getListCatogry();
                     <div class="w-100 p-1 px-3">
                         <h6 class="pl-1">Chọn ảnh</h6>
                         <?php
-                        $path = "../image-upload/";
+                        $path = "../image-profile/";
                         $files = scandir($path);
                         foreach ($files as $filename) {
                             if ($filename != "." && $filename != "..") { ?>
                                 <div class="img-item m-1 d-inline-block" style="width: 180px;height: 110px">
-                                    <img src="../image-upload/<?php echo $filename; ?>" alt="" class="w-75 h-75 mr-2">
+                                    <img src="../image-profile/<?php echo $filename; ?>" alt="" class="w-75 h-75 mr-2">
                                     <input type="radio" name="image" value="<?php echo $filename; ?>" onchange="handleChange1(this.value);">
                                 </div>
                         <?php
